@@ -1,9 +1,11 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
-import QtGraphicalEffects 1.15
+//import QtGraphicalEffects 1.15
+//import QtQuick.Effects
+import Qt5Compat.GraphicalEffects
 import "controls"
-import QtQuick.Dialogs 1.3
+import QtQuick.Dialogs ////1.3
 
 Window {
     id: mainWindow
@@ -310,8 +312,8 @@ Window {
                             FileDialog{
                                 id: fileOpen
                                 title: "Please choose a file"
-                                folder: shortcuts.home
-                                selectMultiple: false
+                                currentFolder: shortcuts.home
+                                // selectMultiple: false
                                 nameFilters: ["Text File (*.txt)"]
                                 onAccepted: {
                                     backend.openFile(fileOpen.fileUrl)
@@ -332,9 +334,9 @@ Window {
                             FileDialog{
                                 id: fileSave
                                 title: "Save file"
-                                folder: shortcuts.home
+                                currentFolder: shortcuts.home
                                 nameFilters: ["Text File (*.txt)"]
-                                selectExisting: false
+                                //selectExisting: false
                                 onAccepted: {
                                     backend.getTextField(actualPage.getText)
                                     backend.writeFile(fileSave.fileUrl)
